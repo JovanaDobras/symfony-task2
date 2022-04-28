@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block title %}Deliverer{% endblock %}
+{% block body %}
+
+<div class="text-center mt-5 mb-5">
+    <h1>RENT A CAR</h1>
+</div>
+
+{% if rentsAll | length %}
+    <div class="container">
+        <table class="table">
+        <thead>
+            <tr class="text-center">
+            <th scope="col">ID RENT</th>
+            <th scope="col"> DELIVERER</th>
+            <th scope="col"> VEHICLE</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for rentAll in rentsAll %}
+            <tr class="text-center">
+            <td scope="row">{{ rentAll.id }}</td>
+            <td>{{ rentAll.deliverer.name }}</td>
+            <td>{{ rentAll.vehicle.brand}}</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+        </table>
+    </div>
+
+    {% else %}
+    <div class="container">
+        <h4 class="text-center">No deliverer!</h4>
+    </div>
+    {% endif %}
+
+
+
+{% endblock %}

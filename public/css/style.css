@@ -1,0 +1,50 @@
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+}
+.width{
+    width: 150px;
+}
+.grid2{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.right{
+    text-align: right;
+}
+.center{
+    text-align: -webkit-center;
+}
+.width3{
+    width: 300px;
+}
+.input{
+    border: 0px;
+    border-bottom: 1px solid black;
+}
+.left{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    float: left;
+    align-content: center;
+    height: 30px;
+    width: 100px;
+    justify-content: center;
+    align-self: center;
+}
+.position{
+    display: grid;
+    /* grid-template-columns: 1fr 1fr; */
+}
+.one{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+.btnAdd{
+    width: 150px;
+}

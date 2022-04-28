@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block title %}Deliverer{% endblock %}
+{% block body %}
+
+<div class="text-center mt-5 mb-5">
+    <h1>VEHICLES</h1>
+    <form action="{{path('add-vehicle')}}" method="POST" class="container center mt-5 mb-5 position">
+        <div class="mb-3 width3 one">
+            <label class="form-label">Brand</label>
+            <input type="text" class="input" name="brand">
+            <label class="form-label">Model</label>
+            <input type="text" class="input" name="model">
+        </div>
+        <button type="submit" name="submitAddVehicle" class="btn btn-secondary btn-sm width left">Add vehicle</button>
+    </form>
+</div>
+
+{% if vehiclesAll | length %}
+    <div class="container">
+        <table class="table">
+        <thead>
+            <tr class="text-center">
+            <th scope="col">ID</th>
+            <th scope="col">BRAND</th>
+            <th scope="col">MODEL</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for vehicleAll in vehiclesAll %}
+            <tr class="text-center">
+            <td scope="row">{{ vehicleAll.id }}</td>
+            <td>{{ vehicleAll.brand }}</td>
+            <td>{{ vehicleAll.model }}</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+        </table>
+    </div>
+
+    {% else %}
+    <div class="container">
+        <h4 class="text-center">No deliverer!</h4>
+    </div>
+    {% endif %}
+
+
+
+{% endblock %}

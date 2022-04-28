@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %}Deliverer{% endblock %}
+{% block body %}
+
+<div class="text-center mt-5 mb-5">
+    <h1>ISTORIJA ZADUZIVANJA</h1>
+</div>
+
+   
+    <div class="container">
+        <table class="table">
+        <thead>
+            <tr class="text-center">
+                <th scope="col">NAME</th>
+                <th scope="col">ID VEHICLE</th>
+                <th scope="col">VEHICLE</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for rent_history in rent_historys %}
+                <tr class="text-center">
+                    <td>{{rent_history.deliverer.name}}</td>
+                    <td>{{rent_history.vehicle.id}}</td>
+                    <td>{{rent_history.vehicle.brand}}</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+        </table>
+    </div>
+
+
+
+{% endblock %}

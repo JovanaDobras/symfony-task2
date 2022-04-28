@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block title %}Deliverer{% endblock %}
+{% block body %}
+
+<div class="text-center mt-5 mb-5">
+    <h1>DELIVERER</h1>
+
+    <form action="{{path('add-deliverer')}}" method="POST" class="container center mt-5 mb-5 position">
+        <div class="mb-3 width3 one">
+            <label class="form-label">Your name</label>
+            <input type="text" class="input" name="name">
+        </div>
+        <button type="submit" name="submitAdd" class="btn btn-secondary btn-sm width left btnAdd">Add deliverer</button>
+    </form>
+</div>
+
+{% if rentacar | length %}
+    <div class="container">
+        <table class="table">
+        <thead>
+            <tr class="text-center">
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th>IZNAJMLJENO</th>
+            <th>VOZILO</th>
+            <th scope="col">ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for rentacars in rentacar %}
+            <tr class="text-center">
+            <td scope="row">{{ rentacars.id }}</td>
+            <td>{{ rentacars.name }}</td>
+            <td></td>
+            <td>
+            <form action="{{path('rent-car')}}" method="POST" class="grid text-center">
+                <select class="form-select width2" aria-label="Default select example" name="select-option">
+                    <option selected>Izaberite vozilo</option>
+                        {% for vehicle in vehicles %}
+                            <option value="{{vehicle.id}}">{{vehicle.brand}}</option>
+                        {% endfor %} 
+                </select>
+                <input type="hidden" name="getId" value="{{ rentacars.id }}">
+                <button type="submit" class="btn btn-secondary btn-sm width" name="submit-select">Zaduzi vozilo</button>
+            </form>
+            </td>
+            <td class="text-center">
+                {# <a href="{{ path('rent-car', {'id': rentacars.id}) }}" type="button" class="btn btn-secondary btn-sm">Zaduzi vozilo</a> #}
+                <a href="{{ path('deliverer-history', {'id': rentacars.id }) }}"  type="button" class="btn btn-secondary btn-sm">Istorija zaduzivanja</a>
+            </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+        </table>
+    </div>
+
+    {% else %}
+    <div class="container">
+        <h4 class="text-center">No deliverer!</h4>
+    </div>
+    {% endif %}
+
+
+
+{% endblock %}
